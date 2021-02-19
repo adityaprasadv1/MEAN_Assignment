@@ -9,8 +9,8 @@ const index = function(req, res) {
 const display = function(req, res) {
     res.render('display', { 
         title: "Herbal Kitchen - Display",
-        heading: "Not Implimented",
-        subHeading: "Good things come to those who wait!"
+        heading: "Not Implemented",
+        subHeading: "All good things come to those who wait!"
     });
 };
 
