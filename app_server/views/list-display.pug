@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  h1 Recipes
+  each recipe in recipeData
+    .card.card-color.my-4
+      .card-block
+        h3= recipe.name 
+          if(recipe.isNew == true)
+            span.badge.badge-secondary.bg-warning.text-dark.ml-3.new-recipe= "NEW"
+        h5= "Suitable for " + recipe.type
+        p= recipe.info
+        h4= "Ingredients: "
+        ul 
+          each ingredient in recipe.ingredients
+            li= ingredient
