@@ -8,6 +8,8 @@ block content
         h3= recipe.name 
           if(recipe.isNew == true)
             span.badge.badge-secondary.bg-warning.text-dark.ml-3.new-recipe= "NEW"
+          if(recipe.isFeatured == true)
+            span.badge.badge-secondary.bg-warning.text-dark.ml-3.new-recipe= "FEATURED"
         h5= "Suitable for " + recipe.type
         p= recipe.info
         h4= "Ingredients: "

@@ -13,7 +13,8 @@ let recipeData = [
             "Salt",
             "Oil"
         ],
-        isNew: true
+        isNew: true,
+        isFeatured: true
     },
     {
         name: "Poutine",
@@ -26,7 +27,8 @@ let recipeData = [
             "Salt",
             "Oil"
         ],
-        isNew: false
+        isNew: false,
+        isFeatured: true
 
     },
     {
@@ -42,7 +44,8 @@ let recipeData = [
             "Salt",
             "Oil",
         ],
-        isNew: false
+        isNew: false,
+        isFeatured: false
     }
 ];
 
