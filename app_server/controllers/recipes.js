@@ -1,61 +1,78 @@
-let recipeData = [
-    {
-        name: "Dosa",
-        type: "Breakfast",
-        info: "A dosa or dose is a thin pancake or crepe, originating from South India, made from a fermented batter predominantly consisting of lentils and rice. It is somewhat similar to a crepe in appearance, although savoury flavours are generally emphasized.",
-        ingredients: [
-            "Rice",
-            "Dosa rice",
-            "Urad dal",
-            "Fenugreek seeds",
-            "Flattend rice",
-            "Water",
-            "Salt",
-            "Oil"
-        ],
-        isNew: true,
-        isFeatured: true
-    },
-    {
-        name: "Poutine",
-        type: "Lunch",
-        info: "Poutine is a dish of french fries and cheese curds topped with a brown gravy. It emerged in Quebec, Canada, in the late 1950s in the Centre-du-Québec region, though its origins are uncertain and there are several competing claims of having invented the dish.",
-        ingredients: [
-            "Potato",
-            "Gravy",
-            "Cheese",
-            "Salt",
-            "Oil"
-        ],
-        isNew: false,
-        isFeatured: true
+const request = require("request");
+const apiOptions = {
+  server: "http://localhost:3000",
+};
 
-    },
-    {
-        name: "Biryani",
-        type: "Dinner",
-        info: "Biryani is a mixed rice dish originating among the Muslims of the Indian subcontinent. It is made with Indian spices, rice, and meat, and sometimes, in addition, eggs and/or vegetables such as potatoes in certain regional varieties. Biryani is popular throughout the Indian subcontinent, as well as among its diaspora.",
-        ingredients: [
-            "Basmati rice",
-            "Spices",
-            "Curd",
-            "Panner cheese",
-            "Green chillies",
-            "Salt",
-            "Oil",
-        ],
-        isNew: false,
-        isFeatured: false
-    }
-];
-
-const recipeList = function(req, res) {  
+const listDisplay = function (req, res, next) {
     res.render('list-display', { 
         title: "Herbal Kitchen - Recipes", 
-        recipeData: recipeData
+        recipeData: next
+    });
+}
+
+const recipeList = function(req, res) {
+    const path = "/api/recipes";
+    const requestOptions = {
+      url: apiOptions.server + path,
+      method: "GET",
+      json: {},
+    };
+    request(requestOptions, (err, response, body) => {
+        listDisplay(req, res, body);
+    });    
+};
+
+const detailPage = function(req, res, next) {
+    res.render('details', { 
+        title: "Herbal Kitchen - Detailed Page",
+        recipeData: next
     });
 };
 
+const recipeDetail = function(req, res) {
+    const path = `/api/recipes/${req.params.recipeid}`;
+    const requestOptions = {
+      url: apiOptions.server + path,
+      method: "GET",
+      json: {},
+    };
+    request(requestOptions, (err, response, body) => {
+        detailPage(req, res, body);
+    });
+};
+
+const addNewRecipePage = function(req, res) {
+    res.render('create', { 
+        title: "Herbal Kitchen - Create Recipe Page",
+    });
+}
+
+const doAddNewRecipe = function(req, res) {
+    console.log(req.body);
+    const path = '/api/recipes';
+    const postData = {
+        name: req.body.name,
+        type: req.body.type,
+        info: req.body.info,
+        ingredients: req.body.ingredients,
+        isNewer: req.body.isNewer === "on" ? true : false,
+        isFeatured: req.body.isFeatured === "on" ? true : false
+    };
+    const requestOptions = {
+      url: apiOptions.server + path,
+      method: "POST",
+      json: postData,
+    };
+    request(requestOptions, (err, response, body) => {
+        if(response.statusCode === 201) {
+            res.redirect('/list');
+        }
+    });
+}
+
 module.exports = {
-    recipeList
+    recipeList,
+    recipeDetail,
+    addNewRecipePage,
+    doAddNewRecipe
 };

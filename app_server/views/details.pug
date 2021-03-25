@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  h1 Recipes
+  h3
+    a(href='/list' style='color:#292929') Back
+  .card.card-color.my-4
+    .card-block
+      h3= recipeData.name 
+        if(recipeData.banners.isNewer == true)
+          span.badge.badge-secondary.bg-warning.text-dark.ml-3.new-recipe= "NEW"
+        if(recipeData.banners.isFeatured == true)
+          span.badge.badge-secondary.bg-warning.text-dark.ml-3.new-recipe= "FEATURED"
+      h5= "Suitable for " + recipeData.type
+      p= recipeData.info
+      h4= "Ingredients: "
+      ul 
+        each ingredient in recipeData.ingredients
+          li #{ingredient}

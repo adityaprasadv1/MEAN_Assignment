@@ -1,0 +1,31 @@
+extends layout 
+block content 
+  h3
+    a(href='/list' style='color:#292929') Back
+  form(action="", method="post", role="form")
+    .form-group.row.mb-5.mt-5
+      label.col-10.col-sm-2.col-form-label(for="name") Name 
+      .col-12.col-sm-10 
+        input#name.form-control(name="name" placeholder="Your unique name for the dish" required=true)
+    .form-group.row.mb-5 
+      label.col-10.col-sm-2.col-form-label(for="type") Type 
+      .col-12.col-sm-10 
+        input#type.form-control(name="type" placeholder="Type of Dish (Breakfast, lunch, dinner)" required=true)
+    .form-group.row.mb-5 
+      label.col-10.col-sm-2.col-form-label(for="info") Information 
+      .col-12.col-sm-10 
+        input#info.form-control(name="info" placeholder="More about the dish" required=true)
+    .form-group.row.mb-5 
+      label.col-10.col-sm-2.col-form-label(for="ingredients") Ingredients 
+      .col-12.col-sm-10 
+        input#ingredients.form-control(name="ingredients" placeholder="Ingredients list seperated by commas" required=true)
+    .form-group.row.mb-5
+      label.col-10.col-sm-2.col-form-label(for="isNewer") Is this dish new?
+      .col-12.col-sm-10
+        input#isNewer.form-check-input(name="isNewer" type="checkbox")
+    .form-group.row.mb-5
+      label.col-10.col-sm-2.col-form-label(for="isFeatured") Is this a featured dish?
+      .col-12.col-sm-10
+        input#isFeatured.form-check-input(name="isFeatured" type="checkbox")
+    .form-group.row
+      button.btn.btn-primary.float-right Submit

@@ -12,16 +12,16 @@ const bannerSchema = new mongoose.Schema({
     }
 });
 
-const ingredientSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        required: true
-    },
-    quantity: {
-        type: Number,
-        required: true
-    }
-});
+// const ingredientSchema = new mongoose.Schema({
+//     name: {
+//         type: String,
+//         required: true
+//     },
+//     quantity: {
+//         type: Number,
+//         required: true
+//     }
+// });
 
 const recipeSchema = new mongoose.Schema({
     name: { 
@@ -35,10 +35,10 @@ const recipeSchema = new mongoose.Schema({
     info: { 
         type: String,
         required: true,
-        maxlength: 128
+        maxlength: 1024
     },
     ingredients: { 
-        type: [ingredientSchema],
+        type: [String],
         required: true
     },
     banners: { 
@@ -47,4 +47,4 @@ const recipeSchema = new mongoose.Schema({
     }
 });
 
-mongoose.model('Recipe', recipeSchema);
+mongoose.model('Recipie', recipeSchema);

@@ -12,7 +12,8 @@
     "http-errors": "~1.6.3",
     "mongoose": "^5.11.18",
     "morgan": "~1.9.1",
-    "pug": "2.0.0-beta11"
+    "pug": "2.0.0-beta11",
+    "request": "^2.88.2"
   },
   "engines": {
     "node": "15.x"

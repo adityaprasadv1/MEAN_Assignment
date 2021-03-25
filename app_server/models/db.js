@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 
 //local DB connection
-let dbURI = 'mongodb://localhost/myRecipeDB';
+// let dbURI = 'mongodb://localhost/myRecipeDB';
 
 //Remote DB connection
-if (process.env.NODE_ENV === 'production') {
+// if (process.env.NODE_ENV === 'production') {
     dbURI = "mongodb+srv://aditya:aditya@cluster0.cpw0g.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
-}
+// }
 
 mongoose.connect(dbURI, { dbName: 'myRecipeDB', useNewUrlParser: true, useUnifiedTopology: true });
 
