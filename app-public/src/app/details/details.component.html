@@ -1,0 +1,29 @@
+<div class="container margin-top">
+  <h1>Recipe</h1>
+  <h3>
+    <button class="btn btn-primary" routerLink="/list">Back</button>
+    <button class="btn btn-danger float-right ml-3" (click)="deleteRecipe(recipe?._id)">Delete</button>
+    <button class="btn btn-primary float-right" (click)="updateRecipe(recipe?._id)">Change</button>
+  </h3>
+  <div class="card card-color my-4">
+    <div class="card-block">
+      <h3>
+        {{recipe?.name}}<span
+          class="badge badge-secondary bg-warning text-dark ml-3 new-recipe"
+          >{{recipe?.banners.isNewer == true ? 'NEW' : ''}}</span
+        ><span
+          class="badge badge-secondary bg-warning text-dark ml-3 new-recipe"
+          >{{recipe?.banners.isFeatured == true ? 'FEATURED' : ''}}</span
+        >
+      </h3>
+      <h5>Suitable for {{recipe?.type}}</h5>
+      <p>
+        {{recipe?.info}}
+      </p>
+      <h4>Ingredients:</h4>
+      <ul>
+        <li *ngFor="let ingredient of recipe?.ingredients">{{ingredient}}</li>
+      </ul>
+    </div>
+  </div>
+</div>

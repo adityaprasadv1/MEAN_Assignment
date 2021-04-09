@@ -1,0 +1,95 @@
+<p>create-recipe works!</p>
+<div class="container margin-top">
+  <button class="btn btn-primary" routerLink="/list">Back</button>
+  <form ngNativeValidate action="" method="post" role="form" (ngSubmit)="createEditRecipe(recipe)">
+    <div class="form-group row mb-5 mt-5">
+      <label class="col-10 col-sm-2 col-form-label" for="name">Name </label>
+      <div class="col-12 col-sm-10">
+        <input
+          class="form-control"
+          id="name"
+          name="name"
+          placeholder="Your unique name for the dish"
+          required=""
+          [(ngModel)]="recipe.name"
+        />
+      </div>
+    </div>
+    <div class="form-group row mb-5">
+      <label class="col-10 col-sm-2 col-form-label" for="type">Type </label>
+      <div class="col-12 col-sm-10">
+        <input
+          class="form-control"
+          id="type"
+          name="type"
+          placeholder="Type of Dish (Breakfast, lunch, dinner)"
+          required=""
+          [(ngModel)]="recipe.type"
+        />
+      </div>
+    </div>
+    <div class="form-group row mb-5">
+      <label class="col-10 col-sm-2 col-form-label" for="info"
+        >Information
+      </label>
+      <div class="col-12 col-sm-10">
+        <input
+          class="form-control"
+          id="info"
+          name="info"
+          placeholder="More about the dish"
+          required=""
+          [(ngModel)]="recipe.info"
+        />
+      </div>
+    </div>
+    <div class="form-group row mb-5">
+      <label class="col-10 col-sm-2 col-form-label" for="ingredients"
+        >Ingredients
+      </label>
+      <div class="col-12 col-sm-10">
+        <input
+          class="form-control"
+          id="ingredients"
+          name="ingredients"
+          placeholder="Ingredients list seperated by commas"
+          required=""
+          [(ngModel)]="recipe.ingredients"
+        />
+      </div>
+    </div>
+    <div class="form-group row mb-5">
+      <label class="col-10 col-sm-2 col-form-label" for="isNewer"
+        >Is this dish new?</label
+      >
+      <div class="col-12 col-sm-10">
+        <input
+          class="form-check-input"
+          id="isNewer"
+          name="isNewer"
+          type="checkbox"
+          [checked]="recipe.banners.isNewer"
+          (change)="recipe.banners.isNewer = !recipe.banners.isNewer"
+        />
+      </div>
+    </div>
+    <div class="form-group row mb-5">
+      <label class="col-10 col-sm-2 col-form-label" for="isFeatured"
+        >Is this a featured dish?</label
+      >
+      <div class="col-12 col-sm-10">
+        <input
+          class="form-check-input"
+          id="isFeatured"
+          name="isFeatured"
+          type="checkbox"
+          [checked]="recipe.banners.isFeatured"
+          (change)="recipe.banners.isFeatured = !recipe.banners.isFeatured"
+        />
+      </div>
+    </div>
+    <div class="form-group row">
+      <button class="btn btn-primary float-right">{{href == '/new' ? 'Submit' : 'Change' }}</button>
+    </div>
+  </form>
+</div>

@@ -48,15 +48,16 @@ const addNewRecipePage = function(req, res) {
 }
 
 const doAddNewRecipe = function(req, res) {
-    console.log(req.body);
     const path = '/api/recipes';
     const postData = {
         name: req.body.name,
         type: req.body.type,
         info: req.body.info,
         ingredients: req.body.ingredients,
-        isNewer: req.body.isNewer === "on" ? true : false,
-        isFeatured: req.body.isFeatured === "on" ? true : false
+        banners: {
+            isNewer: req.body.isNewer === "on" ? true : false,
+            isFeatured: req.body.isFeatured === "on" ? true : false
+        }
     };
     const requestOptions = {
       url: apiOptions.server + path,

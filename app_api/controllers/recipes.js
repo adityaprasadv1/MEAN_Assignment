@@ -19,8 +19,8 @@ const createRecipe = (req, res) => {
             info: req.body.info,
             ingredients: req.body.ingredients.split(','),
             banners: {
-                isNewer: req.body.isNewer,
-                isFeatured: req.body.isFeatured
+                isNewer: req.body.banners.isNewer,
+                isFeatured: req.body.banners.isFeatured
             },
         },
         (err, recipeData) => {
@@ -68,10 +68,10 @@ const updateRecipe = (req, res) => {
         recipeData.name = req.body.name;
         recipeData.type = req.body.type;
         recipeData.info = req.body.info;
-        recipeData.ingredients = req.body.ingredients.split(',');
+        recipeData.ingredients = req.body.ingredients.toString().split(',');
         recipeData.banners = {
-            isNewer: req.body.isNewer,
-            isFeatured: req.body.isFeatured
+            isNewer: req.body.banners.isNewer,
+            isFeatured: req.body.banners.isFeatured
         };
 
         recipeData.save((err, recipeData) => {

@@ -1,0 +1,22 @@
+<div class="container margin-top">
+  <div class="d-flex justify-content-between">
+    <h1>Recipes</h1>
+    <button class="btn btn-primary" routerLink="/new">Create New</button>
+  </div>
+  <div class="card card-color my-4" *ngFor="let recipe of recipes">
+    <div class="card-block">
+      <a routerLink="/details/{{recipe._id}}"
+        ><h3>
+          {{recipe.name}}<span
+            class="badge badge-secondary bg-warning text-dark ml-3 new-recipe"
+            >{{recipe.banners.isNewer == true ? 'NEW' : ''}}</span
+          ><span
+            class="badge badge-secondary bg-warning text-dark ml-3 new-recipe"
+            >{{recipe.banners.isFeatured == true ? 'FEATURED' : ''}}</span
+          >
+        </h3>
+        <h5>Suitable for {{recipe.type}}</h5></a
+      >
+    </div>
+  </div>
+</div>
